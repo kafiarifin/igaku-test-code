@@ -4,8 +4,10 @@ WORKDIR /
 ENV PATH /node_modules/.bin:$PATH
 
 COPY package*.json ./
-RUN npm install && cd server
+RUN npm install
 COPY . .
+
+WORKDIR /server
 
 EXPOSE 3005
 
