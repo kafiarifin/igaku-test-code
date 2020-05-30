@@ -5,7 +5,7 @@ const pool = require("../db");
 router.get("/", authorize, async (req, res) => {
   try {
     const user = await pool.query(
-      "SELECT name FROM users.users WHERE id = $1",
+      "SELECT name FROM users WHERE id = $1",
       [req.user.id] // payload data
     ); 
     

@@ -6,7 +6,7 @@ const pool = require("../../db");
 router.get("/", authorize, async (req, res) => {
   try {
     const user = await pool.query(
-      "SELECT t.id, t.description FROM todos.todos  AS t LEFT JOIN users.users AS u ON u.id = t.user_id WHERE u.id = $1 ORDER BY t.id",
+      "SELECT t.id, t.description FROM todos  AS t LEFT JOIN users AS u ON u.id = t.user_id WHERE u.id = $1 ORDER BY t.id",
       [req.user.id]
     );
 
@@ -23,7 +23,7 @@ router.get("/search", authorize, async (req, res) => {
     const { description } = req.query;
 
     const user = await pool.query(
-      "SELECT t.id, t.description FROM todos.todos  AS t LEFT JOIN users.users AS u ON u.id = t.user_id WHERE u.id = $1 AND t.description ILIKE $2 ORDER BY t.id",
+      "SELECT t.id, t.description FROM todos  AS t LEFT JOIN users AS u ON u.id = t.user_id WHERE u.id = $1 AND t.description ILIKE $2 ORDER BY t.id",
       [
         req.user.id,
         `%${description}%`
@@ -45,7 +45,7 @@ router.post("/", authorize, async (req, res) => {
       return res.json("Description is empty");
     } 
     const newTodo = await pool.query(
-      "INSERT INTO todos.todos (user_id, description) VALUES ($1, $2) RETURNING *",
+      "INSERT INTO todos (user_id, description) VALUES ($1, $2) RETURNING *",
       [req.user.id, description]
     );
     
@@ -62,7 +62,7 @@ router.put("/:id", authorize, async (req, res) => {
     const { description } = req.body;
     
     const updateTodo = await pool.query(
-      "UPDATE todos.todos SET description = $1 WHERE id = $2 AND user_id = $3 RETURNING *",
+      "UPDATE todos SET description = $1 WHERE id = $2 AND user_id = $3 RETURNING *",
       [description, id, req.user.id]
     );
 
@@ -81,7 +81,7 @@ router.delete("/:id", authorize, async (req, res) => {
   try {
     const { id } = req.params;
     const deleteTodo = await pool.query(
-      "DELETE FROM todos.todos WHERE id = $1 AND user_id = $2 RETURNING *",
+      "DELETE FROM todos WHERE id = $1 AND user_id = $2 RETURNING *",
       [id, req.user.id]
     );
 

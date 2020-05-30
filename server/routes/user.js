@@ -11,7 +11,7 @@ router.post("/register", validate, async (req, res) => {
   const { email, name, password } = req.body;
 
   try {
-    const user = await pool.query("SELECT * FROM users.users WHERE email = $1", [
+    const user = await pool.query("SELECT * FROM users WHERE email = $1", [
       email
     ]);
 
@@ -23,7 +23,7 @@ router.post("/register", validate, async (req, res) => {
     const bcryptPassword = await bcrypt.hash(password, salt);
 
     let newUser = await pool.query(
-      "INSERT INTO users.users (name, email, passwd) VALUES ($1, $2, $3) RETURNING *",
+      "INSERT INTO users (name, email, passwd) VALUES ($1, $2, $3) RETURNING *",
       [name, email, bcryptPassword]
     );
 
@@ -58,7 +58,7 @@ router.post("/login", validate, async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await pool.query("SELECT * FROM users.users WHERE email = $1", [
+    const user = await pool.query("SELECT * FROM users WHERE email = $1", [
       email
     ]);
 
