@@ -1,12 +1,11 @@
 FROM node:12.4.0
 
 WORKDIR /client
+
 ENV PATH /client/node_modules/.bin:$PATH
 
-COPY package*.json ./
+COPY ./client .
 RUN npm install
-COPY . .
+RUN npm install react-scripts@latest -g
 
-EXPOSE 3000
-
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]
