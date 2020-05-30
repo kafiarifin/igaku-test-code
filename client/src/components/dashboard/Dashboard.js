@@ -83,7 +83,7 @@ const Dashboard = ({ setAuth }) => {
   return (
     <div>
       <nav class="navbar navbar-dark bg-info mb-3">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/dashboard">
           <img src="/logo.svg" width="35" height="35" style={{marginRight: "10px"}} class="d-inline-block align-top" alt="" />
           Hi, {name} !
         </a>
