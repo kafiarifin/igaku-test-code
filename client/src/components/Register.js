@@ -45,34 +45,39 @@ const Register = ({ setAuth }) => {
 
   return (
     <Fragment>
+      <nav class="navbar mb-3">
+      <Link to="/"><img src="/back-arrow.svg" width="35" height="35" style={{marginRight: "10px"}} class="d-inline-block align-top" alt="" /></Link>
+      </nav>
       <h1 className="mt-5 text-center">Register</h1>
-      <form onSubmit={onSubmitForm}>
-        <input
-          type="text"
-          name="email"
-          value={email}
-          placeholder="email"
-          onChange={e => onChange(e)}
-          className="form-control my-3"
-        />
-        <input
-          type="password"
-          name="password"
-          value={password}
-          placeholder="password"
-          onChange={e => onChange(e)}
-          className="form-control my-3"
-        />
-        <input
-          type="text"
-          name="name"
-          value={name}
-          placeholder="name"
-          onChange={e => onChange(e)}
-          className="form-control my-3"
-        />
-        <button className="btn btn-success btn-block">Submit</button>
-      </form>
+      <div className="container">
+        <form onSubmit={onSubmitForm}>
+          <input
+            type="text"
+            name="email"
+            value={email}
+            placeholder="email"
+            onChange={e => onChange(e)}
+            className="form-control my-3"
+          />
+          <input
+            type="password"
+            name="password"
+            value={password}
+            placeholder="password"
+            onChange={e => onChange(e)}
+            className="form-control my-3"
+          />
+          <input
+            type="text"
+            name="name"
+            value={name}
+            placeholder="name"
+            onChange={e => onChange(e)}
+            className="form-control my-3"
+          />
+          <button className="btn btn-info btn-block">Submit</button>
+        </form>
+      </div>
       <br></br>
       <p className="text-center">Already have an account?</p>
       <Link to="/login"><p className="text-center">Login</p></Link>

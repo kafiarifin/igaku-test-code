@@ -31,9 +31,8 @@ const TodoList = ({allTodos, setTodosChange}) => {
       <table className="table mt-5 text-center">
         <thead>
           <tr>
-            <th>Description</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>Todo Task</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -46,15 +45,15 @@ const TodoList = ({allTodos, setTodosChange}) => {
             <tr key={todo.id}>
               <td>{todo.description}</td>
               <td>
-                <TodoEdit todo={todo} setTodosChange={setTodosChange}/>
-              </td>
-              <td>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => deleteTodo(todo.id)}
-                >
-                  Delete
-                </button>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <TodoEdit todo={todo} setTodosChange={setTodosChange}/>
+                  <button
+                    className="btn btn-info btn-sm"
+                    onClick={() => deleteTodo(todo.id)}
+                  >
+                    Done
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

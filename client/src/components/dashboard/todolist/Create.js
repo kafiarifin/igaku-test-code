@@ -31,17 +31,22 @@ const TodoCreate = ({setTodosChange}) => {
 
   return (
     <Fragment>
-      <h1 className="text-center mt-5">Todo List</h1>
-      <form className="d-flex mt-5" onSubmit={onSubmitForm}>
-        <input
-          type="text"
-          className="form-control"
-          value={description}
-          placeholder="Add Todo"
-          onChange={e => setDescription(e.target.value)}
-        />
-        <button className="btn btn-success">Add</button>
-      </form>
+      <div className="container">
+        <form className="d-flex mt-5" onSubmit={onSubmitForm}>
+          <div class="input-group">
+            <input
+              type="text"
+              className="form-control"
+              value={description}
+              placeholder="Type your task..."
+              onChange={e => setDescription(e.target.value)}
+            />
+            <div class="input-group-append">
+              <button className="btn btn-info">Add</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </Fragment>
   );
 };

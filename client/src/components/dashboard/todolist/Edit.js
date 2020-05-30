@@ -33,7 +33,7 @@ const TodoEdit = ({ todo, setTodosChange }) => {
     <Fragment>
       <button
         type="button"
-        className="btn btn-warning"
+        className="btn btn-warning btn-sm"
         data-toggle="modal"
         data-target={`#id${todo.id}`}
       >
@@ -82,7 +82,7 @@ const TodoEdit = ({ todo, setTodosChange }) => {
               </button>
               <button
                 type="button"
-                className="btn btn-danger"
+                className="btn btn-dark"
                 data-dismiss="modal"
                 onClick={() => setDescription(todo.description)}
               >

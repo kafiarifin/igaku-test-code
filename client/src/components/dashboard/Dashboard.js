@@ -82,22 +82,27 @@ const Dashboard = ({ setAuth }) => {
 
   return (
     <div>
-      <div className="d-flex mt-5">
-        <h2>{name} 's Todo List</h2>
-        <button onClick={e => logout(e)} className="btn btn-primary" style={{position: "absolute",right: "8rem"}}>
-          Logout
-        </button>
-      </div>
-      <form className="d-flex mt-5" onSubmit={getSearchResult}>
-        <input
-          type="text"
-          className="form-control"
-          value={description}
-          placeholder="Search Todo..."
-          onChange={e => setDescription(e.target.value)}
-        />
-        <button className="btn btn-success">Search</button>
-      </form>
+      <nav class="navbar navbar-dark bg-info mb-3">
+        <a class="navbar-brand" href="#">
+          <img src="/logo.svg" width="35" height="35" style={{marginRight: "10px"}} class="d-inline-block align-top" alt="" />
+          Hi, {name} !
+        </a>
+        <form class="form-inline" onSubmit={getSearchResult}>
+          <div class="input-group">
+            <input
+              type="text"
+              className="form-control"
+              value={description}
+              placeholder="Search Todo..."
+              onChange={e => setDescription(e.target.value)}
+            />
+            <div class="input-group-append">
+              <button className="btn btn-dark">Search</button>
+            </div>
+          </div>
+        </form>
+        <button onClick={e => logout(e)} class="btn btn-dark">Logout</button>
+      </nav>
       <TodoCreate setTodosChange={setTodosChange} />
       <TodoList allTodos={allTodos} setTodosChange={setTodosChange} />
     </div>
