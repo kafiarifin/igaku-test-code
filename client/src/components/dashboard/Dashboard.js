@@ -13,7 +13,7 @@ const Dashboard = ({ setAuth }) => {
 
   const getProfile = async () => {
     try {
-      const res = await fetch("http://localhost:5000/dashboard/", {
+      const res = await fetch("http://localhost:3005/dashboard/", {
         method: "GET",
         headers: { jwt_token: localStorage.jwt_token }
       });
@@ -44,7 +44,7 @@ const Dashboard = ({ setAuth }) => {
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("jwt_token", localStorage.jwt_token);
 
-      const response = await fetch(`http://localhost:5000/dashboard/todos/search?description=${description}`, {
+      const response = await fetch(`http://localhost:3005/dashboard/todos/search?description=${description}`, {
         method: "GET",
         headers: myHeaders
       });
@@ -59,7 +59,7 @@ const Dashboard = ({ setAuth }) => {
 
   const getTodos = async () => {
     try {
-      const response = await fetch("http://localhost:5000/dashboard/todos",{
+      const response = await fetch("http://localhost:3005/dashboard/todos",{
         method: "GET",
         headers: { jwt_token: localStorage.jwt_token }
       });

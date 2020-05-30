@@ -14,7 +14,7 @@ const TodoCreate = ({setTodosChange}) => {
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("jwt_token", localStorage.jwt_token);
 
-      const response = await fetch("http://localhost:5000/dashboard/todos", {
+      const response = await fetch("http://localhost:3005/dashboard/todos", {
         method: "POST",
         headers: myHeaders,
         body: JSON.stringify(body)
